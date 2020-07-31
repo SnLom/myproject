@@ -104,3 +104,21 @@ Route::get( "/newgallery" , "MyProfileController@gallery" );
 Route::get( "/newgallery/ant" , "MyProfileController@ant" );
 Route::get( "/newgallery/bird" , "MyProfileController@bird" );
 Route::get( "/newgallery/{id}" , "MyProfileController@newgallery_id" );
+
+Route::get( "/coronavirus" , "MyProfileController@coronavirus" );
+
+Route::get("/teacher" , function (){
+	return view("teacher/index");
+});
+
+Route::get("/student" , function (){
+	return view("student/index");
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', function () {
+    return view('table');
+});
