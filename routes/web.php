@@ -141,3 +141,7 @@ Route::get('/staff','StaffController@index');
 Route::get('/staff/{id}', 'StaffController@show');
 Route::post("/staff", "StaffController@store");
 Route::patch("/staff/{id}", "StaffController@update");
+
+Route::resource('post', 'PostController');
+Route::resource('book', 'BookController');
+Route::resource('street', 'StreetController');
