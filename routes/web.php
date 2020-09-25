@@ -162,3 +162,6 @@ Route::patch("/staff/{id}", "StaffController@update");
 Route::resource('post', 'PostController');
 Route::resource('book', 'BookController');
 Route::resource('street', 'StreetController');
+Route::resource('profiles', 'profilesController');
+Route::resource('users', 'usersController');
+Route::resource('vehicles', 'vehiclesController');
