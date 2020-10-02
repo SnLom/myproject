@@ -165,3 +165,11 @@ Route::resource('street', 'StreetController');
 Route::resource('profiles', 'profilesController');
 Route::resource('users', 'usersController');
 Route::resource('vehicles', 'vehiclesController');
+
+Route::resource('product', 'ProductController');
+Route::middleware(['auth'])->group(function () {
+    Route::resource('order', 'OrderController');
+    Route::resource('payment', 'PaymentController');
+    Route::resource('order-product', 'OrderProductController');
+});
+
