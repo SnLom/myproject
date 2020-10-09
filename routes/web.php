@@ -166,6 +166,8 @@ Route::resource('profiles', 'profilesController');
 Route::resource('users', 'usersController');
 Route::resource('vehicles', 'vehiclesController');
 
+Route::get('/product/pdf', 'ProductController@pdf_index');
+
 Route::resource('product', 'ProductController');
 Route::middleware(['auth'])->group(function () {
     Route::resource('order', 'OrderController');

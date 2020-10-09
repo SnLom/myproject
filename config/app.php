@@ -163,6 +163,9 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
+        //Add this line of code
+        Barryvdh\DomPDF\ServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -229,6 +232,11 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'HTML' => Collective\Html\HtmlFacade::class,
 
+        //Add this line of code
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+
     ],
+
+    
 
 ];

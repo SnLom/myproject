@@ -34,6 +34,50 @@
 
                     </div>
                 </div>
+                @php
+                    $orderproduct = $order->order_products;
+                @endphp
+                <div class="card mt-4">
+                    <div class="card-header">รายละเอียด Order {{ $order->id }}</div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th><th>Order Id</th><th>Product Id</th><th>User Id</th><th>Quantity</th><th>Price</th><th>Total</th><th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($orderproduct as $item)
+                                        <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->order_id }}</td>
+                                        <td>
+                                            {{ $item->product_id }}
+                                            <div><img src="{{ url('storage/'.$item->product->photo)}}" width="100" /> </div>            
+                                            <div>{{ $item->product->title }}</div>
+                                        </td>
+                                        <td>{{ $item->user_id }} {{ $item->user->name }}</td>
+                                        <td>{{ $item->quantity }}</td>
+                                        <td>{{ $item->price }}</td>
+                                        <td>{{ $item->total }}</td>
+                                        <td>
+                                            <a href="{{ url('/order-product/' . $item->id) }}" title="View OrderProduct" style="color:white;"><button class="btn btn-info btn-sm"  style="color:white;"><i class="far fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a href="{{ url('/order-product/' . $item->id . '/edit') }}" title="Edit OrderProduct"><button class="btn btn-primary btn-sm"><i class="far fa-edit" aria-hidden="true"></i> Edit</button></a>
+
+                                            <form method="POST" action="{{ url('/order-product' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete OrderProduct" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="far fa-trash-alt" aria-hidden="true"></i> Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>       
+                        </div>   
+                    </div>
+                </div>
             </div>
         </div>
     </div>
